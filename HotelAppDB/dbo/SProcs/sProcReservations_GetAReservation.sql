@@ -3,7 +3,7 @@
 	@lastName nvarchar(50),
 	@todayDate Date
 AS
-	set @todayDate = GETDATE();
+	set @todayDate = GETUTCDATE();
 
 begin
 	set nocount on;

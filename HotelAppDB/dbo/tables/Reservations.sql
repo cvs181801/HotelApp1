@@ -5,7 +5,7 @@
     [EndDate] DATETIME2 NOT NULL, 
     [CheckedIn] BIT NOT NULL DEFAULT 0, 
     [GuestId] INT NOT NULL, 
-    [ConfimationNumber] INT NOT NULL, --how do I set this up to be a unique GUID?
+    [ConfimationNumber] UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(), 
     [RoomId] INT NOT NULL, 
     [TotalCost] MONEY NOT NULL,
     CONSTRAINT [FK_Reservations_Rooms] FOREIGN KEY (RoomId) REFERENCES Rooms(Id),

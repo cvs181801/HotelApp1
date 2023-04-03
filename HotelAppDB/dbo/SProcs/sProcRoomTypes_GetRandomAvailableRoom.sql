@@ -1,6 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[sProcRoomTypes_GetAvailableTypes]
+﻿
+CREATE PROCEDURE [dbo].[sProcRoomTypes_GetRandomAvailableRoom]
 	@startDate date,
-	@endDate date, -- I don't understand this error
+	@endDate date, 
 	@roomTypeId int
 
 AS

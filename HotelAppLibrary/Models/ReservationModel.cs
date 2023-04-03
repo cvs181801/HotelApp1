@@ -13,6 +13,6 @@ namespace HotelAppLibrary.Models
         public string LastName { get; set; }
         public string RoomNumber { get; set; }
         public bool CheckedIn { get; set; }
-        public int ConfirmationNumber { get; set; }
+        public Guid ConfirmationNumber { get; set; }
     }
 }

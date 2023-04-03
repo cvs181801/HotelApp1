@@ -8,7 +8,7 @@ using HotelAppLibrary.Models;
 
 namespace HotelAppLibrary.Databases
 {
-    public class SqlAccessCRUD
+    public class SqlAccessCRUD : IDatabaseData
     {
         private const string _connectionStringName = "SqlDb";
         private readonly ISqlDataAccess _db;
@@ -19,10 +19,11 @@ namespace HotelAppLibrary.Databases
         }
         public List<RoomTypeModel> GetAllAvailableRoomTypes(DateTime startDate, DateTime endDate)
         {
-            return _db.LoadData<RoomTypeModel, dynamic>("dbo.sProcRoomTypes_GetAvailableTypes", 
-                                                new { startDate, endDate }, 
+
+            return _db.LoadData<RoomTypeModel, dynamic>("dbo.sProcRoomTypes_GetAvailableTypes",
+                                                new { startDate, endDate },
                                                 _connectionStringName,
-                                                true); 
+                                                true);
         }
 
         public void CreateAReservation(int RoomTypeId, DateTime startDate, DateTime endDate, string firstName, string lastName)
@@ -52,13 +53,12 @@ namespace HotelAppLibrary.Databases
                                                 true).First();
         }
 
-        public void CheckInGuest(string guestId)
+        public void CheckInGuest(string confirmationNumber)
         {
             _db.SaveData("dbo.sProcReservations_CheckIn.sql",
-                         new { guestId }, //when we pass in this parameter object, is it simply that the sProc needs it's parameters in the form of an object? I am kinda confused on the relationship of this parameter obj with the models.
+                         new { confirmationNumber },
                          _connectionStringName,
                          true);
         }
     }
 }
-// I want to push this code to github directly from the vs interface..

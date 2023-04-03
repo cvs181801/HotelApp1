@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[sProcReservations_CheckIn]
 	@todayDate Date,
-	@guestId int
+	@confirmationNumber int
 AS
 	set @todayDate = GETDATE();
 begin
@@ -8,6 +8,6 @@ begin
 
 	UPDATE Reservations
 	SET CheckedIn = 1
-	WHERE (GuestId = @guestId AND StartDate = @todayDate);
+	WHERE (ConfimationNumber = @confirmationNumber AND StartDate = @todayDate);
 
 end
