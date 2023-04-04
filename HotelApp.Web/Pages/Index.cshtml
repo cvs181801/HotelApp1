@@ -5,6 +5,20 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Ready for your next getaway?  Book with AwesomeHotel now!</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+    <p>Choose Your Desired Date Range:</p>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="@Model.DesiredStartDate"/>
+            <input type="date" asp-for="@Model.DesiredStartDate"/>
+        <div />
+        <div class="form-group">
+            <label asp-for="@Model.DesiredEndDate" />
+            <input type="date" asp-for="@Model.DesiredEndDate" />
+        <div />
+        <button type="submit" class="btn btn-primary">Search Rooms</button>
+    </form>
+    
 </div>
