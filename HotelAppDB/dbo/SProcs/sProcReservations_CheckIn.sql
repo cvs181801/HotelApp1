@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[sProcReservations_CheckIn]
 	@todayDate Date,
-	@confirmationNumber int
+	@confirmationNumber uniqueidentifier
 AS
 	set @todayDate = GETDATE();
 begin

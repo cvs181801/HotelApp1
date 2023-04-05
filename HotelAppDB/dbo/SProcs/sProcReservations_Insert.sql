@@ -8,6 +8,6 @@ AS
 begin
 	set nocount on;
 
-	INSERT INTO dbo.Reservations(StartDate, EndDate, RoomId, GuestId, RoomId, TotalCost)
+	INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)
 	VALUES (@startDate, @endDate, @guestId, @roomId, @totalCost);
 end
