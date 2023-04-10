@@ -50,11 +50,12 @@
                     <p>@room.Description</p>
                     <p>@string.Format("{0:C}", room.Price)</p>
                     <div ><a 
-                        asp-page="/BookRoom" 
-                        asp-route-roomtypeid="@room.Id"
-                        asp-route-desiredstartdate="@Model.DesiredStartDate"
-                        asp-route-desiredenddate="@Model.DesiredEndDate"
-                    >Book This Room</a></div>
+                        asp-page="/BookRoom"
+                        asp-route-roomtypeid="@room.Id" 
+                        asp-route-desiredstartdate="@Model.DesiredStartDate.ToShortDateString()"
+                        asp-route-desiredenddate="@Model.DesiredEndDate.ToShortDateString()"
+                    >Book This Room</a>
+                    </div>
                 </div>
                 <br/>
             }

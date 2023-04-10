@@ -12,6 +12,9 @@ namespace HotelApp.Web.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly IDatabaseData _db;
 
+        [BindProperty(SupportsGet = true)]
+        public int RoomTypeId { get; set; }
+
         [DataType(DataType.Date)]
         [BindProperty(SupportsGet = true)]
         public DateTime DesiredStartDate { get; set; } = DateTime.Now;
@@ -47,7 +50,6 @@ namespace HotelApp.Web.Pages
                 DesiredStartDate = DesiredStartDate.ToString("yyyy-MM-dd"), 
                 DesiredEndDate = DesiredEndDate.ToString("yyyy-MM-dd"),
             });
-            //return RedirectToPage("RoomSearch", "", new { SearchEnabled = true, DesiredStartDate, DesiredEndDate });
         }
     }
 }
