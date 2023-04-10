@@ -6,7 +6,6 @@
 
 <div class="text-center">
     <h1 class="display-4">Ready for your next getaway?  Book with AwesomeHotel now!</h1>
-    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
     <p>Choose Your Desired Date Range:</p>
 
     <form method="post">
@@ -20,5 +19,46 @@
         <div />
         <button type="submit" class="btn btn-primary">Search Rooms</button>
     </form>
-    
 </div>
+
+    @if (Model.AvailableRoomTypes?.Count > 0)
+    {
+        <div>
+        <h2 class="text-center">All Rooms Available Between @Model.DesiredStartDate.Date.ToString("MMMM dd, yyyy") and @Model.DesiredEndDate.Date.ToString("MMMM dd, yyyy")</h2>
+            @*<div class="text-left">
+                <p>Filter by:</p>
+                <form>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Suite</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">2 Queen Beds</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">1 King Bed</label>
+                    </div>
+                </form>
+            </div>*@
+        </div>
+            @foreach(var room in Model.AvailableRoomTypes)
+            {
+                <div class="card">
+                    <p>@room.Type</p>
+                    <p>@room.Description</p>
+                    <p>@string.Format("{0:C}", room.Price)</p>
+                    <div ><a 
+                        asp-page="/BookRoom" 
+                        asp-route-roomtypeid="@room.Id"
+                        asp-route-desiredstartdate="@Model.DesiredStartDate"
+                        asp-route-desiredenddate="@Model.DesiredEndDate"
+                    >Book This Room</a></div>
+                </div>
+                <br/>
+            }
+        
+    }
+    
+

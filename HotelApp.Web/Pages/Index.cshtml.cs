@@ -17,7 +17,7 @@ namespace HotelApp.Web.Pages
         public DateTime DesiredStartDate { get; set; } = DateTime.Now;
 
         [DataType(DataType.Date)]
-        [BindProperty (SupportsGet = true)]
+        [BindProperty(SupportsGet = true)]
         public DateTime DesiredEndDate { get; set; } = DateTime.Now.AddDays(1);
 
         [BindProperty(SupportsGet = true)]
@@ -42,7 +42,12 @@ namespace HotelApp.Web.Pages
 
         public IActionResult OnPost()
         {
-            return RedirectToPage(new {SearchEnabled = true, DesiredStartDate, DesiredEndDate});
+            return RedirectToPage(new 
+            {SearchEnabled = true, 
+                DesiredStartDate = DesiredStartDate.ToString("yyyy-MM-dd"), 
+                DesiredEndDate = DesiredEndDate.ToString("yyyy-MM-dd"),
+            });
+            //return RedirectToPage("RoomSearch", "", new { SearchEnabled = true, DesiredStartDate, DesiredEndDate });
         }
     }
 }

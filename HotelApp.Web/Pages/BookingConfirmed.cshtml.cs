@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HotelApp.Web.Pages
 {
-    public class RoomSearchModel : PageModel
+    public class BookingConfirmedModel : PageModel
     {
         public void OnGet()
         {
