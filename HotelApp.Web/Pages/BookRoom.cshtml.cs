@@ -1,4 +1,5 @@
 using HotelAppLibrary.Databases;
+using HotelAppLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -17,8 +18,6 @@ namespace HotelApp.Web.Pages
         [BindProperty(SupportsGet = true)]
         public string LastName { get; set; }
 
-        public bool BookingConfirmed { get; set; } = false;
-
         [DataType(DataType.Date)]
         [BindProperty(SupportsGet = true)]
         public DateTime DesiredStartDate { get; set; } 
@@ -27,6 +26,11 @@ namespace HotelApp.Web.Pages
         [BindProperty(SupportsGet = true)]
         public DateTime DesiredEndDate { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public ReservationModel Booking { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public bool BookingConfirmed { get; set; } = false;
         public IDatabaseData _db { get; }
 
         public BookRoomModel(IDatabaseData db)
@@ -36,15 +40,18 @@ namespace HotelApp.Web.Pages
 
         public void OnGet()
         {
-           if (RoomTypeId > 0)
-            {
-                _db.CreateAReservation(RoomTypeId, DesiredStartDate, DesiredEndDate, FirstName, LastName);
-            }
+            //if (BookingConfirmed)
+           //{
+                  //I think this is happening because its a SaveData not just a LoadData..
+            
+            //}
+
         }
-       
+
         public IActionResult OnPost() 
         {
-            return RedirectToPage("/BookingConfirmed", new {FirstName, LastName, DesiredStartDate, DesiredEndDate});
+            _db.CreateAReservation(RoomTypeId, DesiredStartDate, DesiredEndDate, FirstName, LastName);
+            return RedirectToPage("/BookingConfirmed", new {FirstName, LastName, DesiredStartDate, DesiredEndDate, RoomTypeId});
                 
         }
 
