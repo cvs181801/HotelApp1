@@ -51,6 +51,7 @@ namespace HotelApp.Web.Pages
         public IActionResult OnPost() 
         {
             _db.CreateAReservation(RoomTypeId, DesiredStartDate, DesiredEndDate, FirstName, LastName);
+            //Booking = _db.GetAReservation(FirstName, LastName);
             return RedirectToPage("/BookingConfirmed", new {FirstName, LastName, DesiredStartDate, DesiredEndDate, RoomTypeId});
                 
         }

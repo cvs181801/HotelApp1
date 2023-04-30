@@ -33,7 +33,7 @@ namespace HotelAppLibrary.Databases
 
         }*/
 
-        public void CreateAReservation(int RoomTypeId, DateTime startDate, DateTime endDate, string firstName, string lastName)
+        public ReservationModel CreateAReservation(int RoomTypeId, DateTime startDate, DateTime endDate, string firstName, string lastName)
         {
             GuestModel guest = _db.LoadData<GuestModel, dynamic>("dbo.sProcGuests_Insert",
                                                                 new { firstName, lastName },
@@ -45,14 +45,41 @@ namespace HotelAppLibrary.Databases
                                                                                      new { startDate, endDate, RoomTypeId },
                                                                                      _connectionStringName,
                                                                                      true).First();
+/*
+            string sql = "@affectedRow INT" +
+                "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost) " +
+                "VALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
+                "SET @affectedRow = SCOPE_IDENTITY();" +
+                "SELECT @affectedRow" +
+                "RETURN;";*/
 
-            _db.SaveData("dbo.sProcReservations_Insert",
+             ReservationModel newlyAddedResv = _db.SaveData("dbo.sProcReservations_Insert",
+                        //sql,
                         new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
                         _connectionStringName,
-                        true);
-                        }
+                        true
+                        //false
+                        );
 
-        public ReservationModel GetAReservation(string firstName, string lastName)
+            return newlyAddedResv;
+
+            /*_db.SaveData("INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)\r\n\tVALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
+                "SELECT CAST(SCOPE_IDENTITY() as string);"
+                new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
+                        _connectionStringName,
+                        false)*/
+
+            /*  string query = "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)\r\n\tVALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
+                  "SELECT CAST(SCOPE_IDENTITY() as string);";
+
+              ReservationModel newlyAddedResv = _db.LoadData<string>( )*/
+
+            ///according to documentation the Execute method should return the affected rows, but I can't tell how to view those/grab those from within that method...
+        }
+
+       
+
+    public ReservationModel GetAReservation(string firstName, string lastName)
         {
             return _db.LoadData<ReservationModel, dynamic>("dbo.sProcReservations_GetAReservation",
                                                            new { firstName, lastName },

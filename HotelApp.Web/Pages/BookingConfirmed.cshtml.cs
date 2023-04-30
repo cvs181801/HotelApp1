@@ -43,16 +43,16 @@ namespace HotelApp.Web.Pages
 
         public void OnGet()
         {
-            //if (BookingConfirmed)
-            //{
-                //Booking = _db.CreateAReservation(RoomTypeId, DesiredStartDate, DesiredEndDate, FirstName, LastName); 
-            //}
-           
+            /*if (BookingConfirmed)
+            {*/
+                //Booking = _db.GetReservation(Booking.FirstName, Booking.LastName );
+            /*}*/
+
         }
 
         public IActionResult OnPost()
         {
-            Console.WriteLine(FirstName, LastName);
+            Console.WriteLine(FirstName, LastName, Booking.LastName);
 
             return RedirectToPage(new
             {
@@ -62,7 +62,7 @@ namespace HotelApp.Web.Pages
                 ConfirmationNumber = Booking.ConfirmationNumber.ToString(), 
                 FirstName = Booking.FirstName,
                 LastName = Booking.LastName
-            });  //the conf number is just getting rendered as all 0's , why ?
-        } 
+            });  //the conf number is just getting rendered as all 0's , why ? Looks like the guid isn't programmed to be grabbed from the reservation model to flow into the front end correctly
+        } //can we get the room type too
     }
 }
