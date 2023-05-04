@@ -43,14 +43,14 @@ namespace HotelAppLibrary.Databases
             }
         }
 
-        public ReservationModel SaveData<T>(string sqlStatement,
-                                T parameters,
+        public T SaveData<T>(string sqlStatement,
+                                object parameters,
                                 string connectionStringName,
                                 bool isStoredProc = false)
         {
             string connectionString = _config.GetConnectionString(connectionStringName);
             CommandType commandType = CommandType.Text;
-            ReservationModel affectedRows;
+            T result;
 
             if (isStoredProc == true)
             {
@@ -59,11 +59,13 @@ namespace HotelAppLibrary.Databases
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                 affectedRows = connection.Execute(sqlStatement, parameters, commandType: commandType);
-                //Console.Write(affectedRows);
+                 result = connection.QuerySingle(sqlStatement, parameters, commandType: commandType); //I don't think we're getting back the data we want (a resvervationmodel)
+                //Console.Write("affectedRows:  "+ affectedRows);
             }
-            return (ReservationModel)affectedRows; //how to get it to return the obj (or at least the ID of the newly inserted row) rather than just an int of 1 or -1 ? ? 
-        } //also looks like I can't push to git from the UI  ? ? ? 
+            return result; 
+        } 
+
+
     }
 
 }

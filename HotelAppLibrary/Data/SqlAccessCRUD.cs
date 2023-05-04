@@ -45,20 +45,20 @@ namespace HotelAppLibrary.Databases
                                                                                      new { startDate, endDate, RoomTypeId },
                                                                                      _connectionStringName,
                                                                                      true).First();
-/*
-            string sql = "@affectedRow INT" +
+
+           /* string sql = "DECLARE @affectedRow INT" +
                 "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost) " +
                 "VALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
                 "SET @affectedRow = SCOPE_IDENTITY();" +
                 "SELECT @affectedRow" +
-                "RETURN;";*/
+                "RETURN;";
+*/
 
-             ReservationModel newlyAddedResv = _db.SaveData("dbo.sProcReservations_Insert",
-                        //sql,
+
+            ReservationModel newlyAddedResv =  _db.SaveData<ReservationModel>("dbo.sProcReservations_Insert",
                         new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
                         _connectionStringName,
                         true
-                        //false
                         );
 
             return newlyAddedResv;
@@ -87,9 +87,9 @@ namespace HotelAppLibrary.Databases
                                                            true).First();
         }
 
-        public void CheckInGuest(string confirmationNumber)
+        public ReservationModel CheckInGuest(string confirmationNumber)
         {
-            _db.SaveData("dbo.sProcReservations_CheckIn",
+            return _db.SaveData<ReservationModel>("dbo.sProcReservations_CheckIn",
                         new { confirmationNumber },
                          _connectionStringName,
                          false);

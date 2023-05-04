@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using HotelAppLibrary.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace HotelAppLibrary.Databases
 {
@@ -10,9 +11,10 @@ namespace HotelAppLibrary.Databases
                                U parameters, 
                                string connectionStringName, 
                                bool isStoredProc = false);
-        void SaveData<T>(string sqlStatement, 
-                         T parameters, 
-                         string connectionStringName, 
+
+        T SaveData<T>(string sqlStatement,
+                         object parameters,
+                         string connectionStringName,
                          bool isStoredProc = false);
     }
 }

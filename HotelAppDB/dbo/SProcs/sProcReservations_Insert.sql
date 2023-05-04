@@ -9,7 +9,7 @@ AS
 begin
 
 	begin tran
-	set nocount on; 
+	--set nocount on; 
 	
 	--So the reason that Execute() returns -1 is because your sproc has SET NOCOUNT ON; which 
 	--"suppresses the "xx rows affected" message after any DML" according to this question.
@@ -22,6 +22,8 @@ begin
 	SET @affectedRow = SCOPE_IDENTITY();
 	commit tran
 	
-	SELECT @affectedRow
-	RETURN
+	SELECT g.[FirstName], g.[LastName], resv.[StartDate], resv.[EndDate], resv.[TotalCost], resv.[ConfimationNumber] 
+	FROM dbo.Reservations resv
+	INNER JOIN Guests g ON g.Id = resv.GuestId 
+	WHERE resv.[Id] = @affectedRow;
 end
