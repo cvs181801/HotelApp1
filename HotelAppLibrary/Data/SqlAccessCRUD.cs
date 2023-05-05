@@ -46,18 +46,41 @@ namespace HotelAppLibrary.Databases
                                                                                      _connectionStringName,
                                                                                      true).First();
 
-           /* string sql = "DECLARE @affectedRow INT" +
-                "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost) " +
-                "VALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
+            /*string sql = "DECLARE @affectedRow int;" +
+                "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)" +
+                "VALUES(@startDate, @endDate, @guestId, @roomId, @totalCost);" +
                 "SET @affectedRow = SCOPE_IDENTITY();" +
-                "SELECT @affectedRow" +
-                "RETURN;";
-*/
+                "SELECT resv.GuestId, g.FirstName, g.LastName, resv.RoomId, resv.CheckedIn, resv.ConfimationNumber" +
+                "FROM dbo.Reservations resv" +
+                "INNER JOIN Guests g ON g.Id = resv.GuestId" +
+                "WHERE resv.Id = @affectedRow;";*/
+
+
+
+
+            string sql =
+                /*"DECLARE @affectedRow int;" +
+                "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)" +
+                "VALUES(@startDate, @endDate, @guestId, @roomId, @totalCost);" +
+                "SET @affectedRow = SCOPE_IDENTITY();" +*/
+                /*"SELECT g.FirstName, g.LastName, resv.GuestId, resv.RoomId, resv.CheckedIn, resv.ConfimationNumber" +
+                "FROM dbo.Reservations resv" +
+                "INNER JOIN dbo.Guests g ON g.Id = resv.GuestId" +
+                "WHERE resv.Id = 1;";*/
+                "SELECT *" +
+                "FROM dbo.Reservations" +
+                
+                "WHERE Id = 1;";
+
+            /*        SqlException: 
+     Incorrect syntax near 'resv.'.  This is only showing when I add the SELECT statement back in.*/
 
 
             ReservationModel newlyAddedResv =  _db.SaveData<ReservationModel>("dbo.sProcReservations_Insert",
+                        //sql,
                         new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
                         _connectionStringName,
+                        //false
                         true
                         );
 

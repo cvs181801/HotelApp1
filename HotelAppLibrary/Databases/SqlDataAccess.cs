@@ -59,8 +59,8 @@ namespace HotelAppLibrary.Databases
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                 result = connection.QuerySingle(sqlStatement, parameters, commandType: commandType); //I don't think we're getting back the data we want (a resvervationmodel)
-                //Console.Write("affectedRows:  "+ affectedRows);
+                 result = connection.QuerySingle(sqlStatement, parameters, commandType: commandType); //error: sequence contains no elements
+                Console.Write("result:  "+ result.ToString());
             }
             return result; 
         } 
