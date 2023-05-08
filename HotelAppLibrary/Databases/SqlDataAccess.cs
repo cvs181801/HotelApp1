@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient; // System.Data.SqlClient is the ADO.NET provider you use to access SQL Server or Azure SQL Databases.
 using Microsoft.Extensions.Configuration;
 using HotelAppLibrary.Models;
+using System.Text.Json.Serialization;
 
 namespace HotelAppLibrary.Databases
 {
@@ -51,6 +52,7 @@ namespace HotelAppLibrary.Databases
             string connectionString = _config.GetConnectionString(connectionStringName);
             CommandType commandType = CommandType.Text;
             T result;
+            
 
             if (isStoredProc == true)
             {
@@ -59,8 +61,9 @@ namespace HotelAppLibrary.Databases
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                 result = connection.QuerySingle(sqlStatement, parameters, commandType: commandType); //error: sequence contains no elements
-                Console.Write("result:  "+ result.ToString());
+                result = connection.QuerySingle<T>(sqlStatement, parameters, commandType: commandType); 
+                
+                //Console.Write("result:  "+ result.ToString());
             }
             return result; 
         } 

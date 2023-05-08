@@ -3,21 +3,25 @@
 	@guestId int,
 	@startDate date,
 	@endDate date,
-	@totalCost money,
-	@affectedRowId int 
+	@totalCost money 
 AS
 begin
 
-	begin tran
 	set nocount on; 
 
 	INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)
 	VALUES (@startDate, @endDate, @guestId, @roomId, @totalCost);
-	SET @affectedRowId = SCOPE_IDENTITY();
-	
-	commit tran
-	
-	SELECT resv.GuestId, g.FirstName, g.LastName, resv.RoomId, resv.CheckedIn, resv.ConfimationNumber 
+
+	DECLARE @affectedRowId int = SCOPE_IDENTITY();
+
+	SELECT 
+		resv.GuestId, 
+		g.FirstName, 
+		g.LastName, 
+		resv.RoomId AS RoomNumber, 
+		resv.CheckedIn, 
+		resv.ConfimationNumber AS ConfirmationNumber
+
 	FROM dbo.Reservations resv
 	INNER JOIN Guests g ON g.Id = resv.GuestId 
 	WHERE resv.Id = @affectedRowId;

@@ -97,7 +97,7 @@ namespace HotelAppLibrary.Databases
 
               ReservationModel newlyAddedResv = _db.LoadData<string>( )*/
 
-            ///according to documentation the Execute method should return the affected rows, but I can't tell how to view those/grab those from within that method...
+           
         }
 
        

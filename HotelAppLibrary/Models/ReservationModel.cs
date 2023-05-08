@@ -11,7 +11,7 @@ namespace HotelAppLibrary.Models
         public int GuestId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string RoomNumber { get; set; }
+        public int RoomNumber { get; set; }
         public bool CheckedIn { get; set; }
         public Guid ConfirmationNumber { get; set; }
     }
