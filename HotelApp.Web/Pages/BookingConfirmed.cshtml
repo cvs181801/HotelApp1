@@ -10,8 +10,9 @@
 <div class="card">
     <p>First Name: @Model.FirstName</p>
     <p>Last Name: @Model.LastName</p>
-    <p>Checking in on: @Model.DesiredStartDate.Date.ToString("MMMM dd, yyyy")</p>
-    <p>Checking out on: @Model.DesiredEndDate.Date.ToString("MMMM dd, yyyy")</p>
+    <p>Room Type: @Model.RoomType</p>
+    <p>Checking in on: @Model.ConfirmedStartDate.ToString("MMMM dd, yyyy")</p>
+    <p>Checking out on: @Model.ConfirmedEndDate.ToString("MMMM dd, yyyy")</p>
     <p>Confirmation number: @Model.ConfirmationNumber</p>
 </div>
 <p>We look forward to seeing you!</p>

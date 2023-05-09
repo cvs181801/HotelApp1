@@ -26,6 +26,14 @@ namespace HotelApp.Web.Pages
         [BindProperty(SupportsGet = true)]
         public DateTime DesiredEndDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [BindProperty(SupportsGet = true)]
+        public DateTime ConfirmedStartDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [BindProperty(SupportsGet = true)]
+        public DateTime ConfirmedEndDate { get; set; }
+
         [BindProperty(SupportsGet = true)]
         public ReservationModel Booking { get; set; }
 
@@ -40,11 +48,7 @@ namespace HotelApp.Web.Pages
 
         public void OnGet()
         {
-            //if (BookingConfirmed)
-           //{
-                  //I think this is happening because its a SaveData not just a LoadData..
-            
-            //}
+         
 
         }
 
@@ -52,10 +56,14 @@ namespace HotelApp.Web.Pages
         {
             Booking = _db.CreateAReservation(RoomTypeId, DesiredStartDate, DesiredEndDate, FirstName, LastName);
 
-            return RedirectToPage("/BookingConfirmed", new { Booking.FirstName, Booking.LastName, Booking.RoomType, Booking.StartDate, Booking.EndDate, Booking.ConfirmationNumber }) ;
-                
+
+            return RedirectToPage("/BookingConfirmed", new { 
+                FirstName = Booking.FirstName, 
+                LastName = Booking.LastName, 
+                RoomType = Booking.RoomType, 
+                ConfirmedStartDate = Booking.StartDate, 
+                ConfirmedEndDate = Booking.EndDate, 
+                ConfirmationNumber = Booking.ConfirmationNumber }) ;     
         }
-
-
     }
 }

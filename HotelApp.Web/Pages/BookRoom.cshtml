@@ -8,7 +8,7 @@
 
 <p>Room Type</p>
 <p>Room description</p>
-<form method="post">
+<form method="post" >
     <div class="form-group">
         <label asp-for="@Model.FirstName"></label>
         <input type="string" asp-for="@Model.FirstName"/>
@@ -17,5 +17,8 @@
         <input type="string" asp-for="@Model.LastName" />
 
     </div>
-    <button type="submit" class="btn btn-primary">Confirm My Booking</button>
+    <button 
+        type="submit" 
+        class="btn btn-primary"
+    >Confirm My Booking</button>
 </form>

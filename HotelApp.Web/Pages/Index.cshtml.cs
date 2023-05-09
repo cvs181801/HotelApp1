@@ -37,7 +37,7 @@ namespace HotelApp.Web.Pages
 
         public void OnGet()
         {
-            if (SearchEnabled) //how does searchenabled get changed to true? I think it's simply that when you click the search button the form submits and the page refreshes causing redirecttopage method to trigger, am I rite ? 
+            if (SearchEnabled)  
             {
                 AvailableRoomTypes = _db.GetAllAvailableRoomTypes(DesiredStartDate, DesiredEndDate);
             }

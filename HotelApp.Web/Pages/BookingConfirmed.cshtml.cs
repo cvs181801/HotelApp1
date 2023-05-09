@@ -12,9 +12,6 @@ namespace HotelApp.Web.Pages
         private IDatabaseData _db;
 
         [BindProperty(SupportsGet = true)]
-        public int RoomTypeId { get; set; }
-
-        [BindProperty(SupportsGet = true)]
         public string FirstName { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -22,11 +19,11 @@ namespace HotelApp.Web.Pages
 
         [DataType(DataType.Date)]
         [BindProperty(SupportsGet = true)]
-        public DateTime DesiredStartDate { get; set; }
+        public DateTime ConfirmedStartDate { get; set; }
 
         [DataType(DataType.Date)]
         [BindProperty(SupportsGet = true)]
-        public DateTime DesiredEndDate { get; set; }
+        public DateTime ConfirmedEndDate { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public bool BookingConfirmed { get; set; } = false;
@@ -34,7 +31,10 @@ namespace HotelApp.Web.Pages
         [BindProperty(SupportsGet = true)]
         public Guid ConfirmationNumber { get; set; }
 
-        public ReservationModel Booking { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string RoomType { get; set; }
+
+        /*public ReservationModel Booking { get; set; }*/
 
         public BookingConfirmedModel(IDatabaseData db)
         {
@@ -43,26 +43,15 @@ namespace HotelApp.Web.Pages
 
         public void OnGet()
         {
-            /*if (BookingConfirmed)
-            {*/
-                //Booking = _db.GetReservation(Booking.FirstName, Booking.LastName );
-            /*}*/
-
-        }
-
-        public IActionResult OnPost()
-        {
-            Console.WriteLine(FirstName, LastName, Booking.LastName);
-
-            return RedirectToPage(new
+            RedirectToPage(new
             {
                 BookingConfirmed = true,
-                DesiredStartDate = DesiredStartDate.ToString("yyyy-MM-dd"),
-                DesiredEndDate = DesiredEndDate.ToString("yyyy-MM-dd"),
-                ConfirmationNumber = Booking.ConfirmationNumber.ToString(), 
-                FirstName = Booking.FirstName,
-                LastName = Booking.LastName
-            }); 
-        } 
+                ConfirmedStartDate = ConfirmedStartDate.ToString("yyyy-MM-dd"),
+                ConfirmedEndDate = ConfirmedEndDate.ToString("yyyy-MM-dd"),
+                ConfirmationNumber = ConfirmationNumber.ToString(),
+                FirstName = FirstName,
+                LastName = LastName
+            });
+        }
     }
 }
