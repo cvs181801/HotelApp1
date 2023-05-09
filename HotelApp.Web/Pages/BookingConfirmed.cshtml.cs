@@ -62,7 +62,7 @@ namespace HotelApp.Web.Pages
                 ConfirmationNumber = Booking.ConfirmationNumber.ToString(), 
                 FirstName = Booking.FirstName,
                 LastName = Booking.LastName
-            });  //the conf number is just getting rendered as all 0's , why ? Looks like the guid isn't programmed to be grabbed from the reservation model to flow into the front end correctly
-        } //can we get the room type too
+            }); 
+        } 
     }
 }

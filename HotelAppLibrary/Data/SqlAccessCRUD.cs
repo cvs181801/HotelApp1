@@ -28,10 +28,6 @@ namespace HotelAppLibrary.Databases
                                                 true) ;
         }
 
-       /* public RoomTypeModel GetRoomTypeById()
-        {
-
-        }*/
 
         public ReservationModel CreateAReservation(int RoomTypeId, DateTime startDate, DateTime endDate, string firstName, string lastName)
         {
@@ -46,58 +42,15 @@ namespace HotelAppLibrary.Databases
                                                                                      _connectionStringName,
                                                                                      true).First();
 
-            /*string sql = "DECLARE @affectedRow int;" +
-                "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)" +
-                "VALUES(@startDate, @endDate, @guestId, @roomId, @totalCost);" +
-                "SET @affectedRow = SCOPE_IDENTITY();" +
-                "SELECT resv.GuestId, g.FirstName, g.LastName, resv.RoomId, resv.CheckedIn, resv.ConfimationNumber" +
-                "FROM dbo.Reservations resv" +
-                "INNER JOIN Guests g ON g.Id = resv.GuestId" +
-                "WHERE resv.Id = @affectedRow;";*/
-
-
-
-
-            string sql =
-                /*"DECLARE @affectedRow int;" +
-                "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)" +
-                "VALUES(@startDate, @endDate, @guestId, @roomId, @totalCost);" +
-                "SET @affectedRow = SCOPE_IDENTITY();" +*/
-                /*"SELECT g.FirstName, g.LastName, resv.GuestId, resv.RoomId, resv.CheckedIn, resv.ConfimationNumber" +
-                "FROM dbo.Reservations resv" +
-                "INNER JOIN dbo.Guests g ON g.Id = resv.GuestId" +
-                "WHERE resv.Id = 1;";*/
-                "SELECT *" +
-                "FROM dbo.Reservations" +
-                
-                "WHERE Id = 1;";
-
-            /*        SqlException: 
-     Incorrect syntax near 'resv.'.  This is only showing when I add the SELECT statement back in.*/
-
 
             ReservationModel newlyAddedResv =  _db.SaveData<ReservationModel>("dbo.sProcReservations_Insert",
-                        //sql,
-                        new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
-                        _connectionStringName,
-                        //false
-                        true
-                        );
+                                                new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
+                                                _connectionStringName,
+                                                true
+                                                );
 
             return newlyAddedResv;
-
-            /*_db.SaveData("INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)\r\n\tVALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
-                "SELECT CAST(SCOPE_IDENTITY() as string);"
-                new { startDate = startDate, endDate = endDate, guestId = guest.Id, roomId = roomAssignment.Id, totalCost = roomAssignment.TotalCost },
-                        _connectionStringName,
-                        false)*/
-
-            /*  string query = "INSERT INTO dbo.Reservations(StartDate, EndDate, GuestId, RoomId, TotalCost)\r\n\tVALUES (@startDate, @endDate, @guestId, @roomId, @totalCost)" +
-                  "SELECT CAST(SCOPE_IDENTITY() as string);";
-
-              ReservationModel newlyAddedResv = _db.LoadData<string>( )*/
-
-           
+  
         }
 
        

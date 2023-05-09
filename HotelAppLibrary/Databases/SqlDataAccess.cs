@@ -63,7 +63,6 @@ namespace HotelAppLibrary.Databases
             {
                 result = connection.QuerySingle<T>(sqlStatement, parameters, commandType: commandType); 
                 
-                //Console.Write("result:  "+ result.ToString());
             }
             return result; 
         } 

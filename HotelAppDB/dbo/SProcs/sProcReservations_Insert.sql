@@ -15,14 +15,16 @@ begin
 	DECLARE @affectedRowId int = SCOPE_IDENTITY();
 
 	SELECT 
-		resv.GuestId, 
 		g.FirstName, 
 		g.LastName, 
-		resv.RoomId AS RoomNumber, 
-		resv.CheckedIn, 
+		rt.Type AS RoomType,
+		resv.StartDate,
+		resv.EndDate, 
 		resv.ConfimationNumber AS ConfirmationNumber
 
 	FROM dbo.Reservations resv
 	INNER JOIN Guests g ON g.Id = resv.GuestId 
+	INNER JOIN Rooms r ON resv.RoomId = r.Id
+	INNER JOIN RoomTypes rt ON r.RoomTypeId = rt.Id
 	WHERE resv.Id = @affectedRowId;
 end
