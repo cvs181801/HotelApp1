@@ -6,20 +6,14 @@
         xmlns:local="clr-namespace:HotelApp.Desktop"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,0,-6">
         <TextBlock HorizontalAlignment="Left" Height="27" Margin="328,47,0,0" TextWrapping="Wrap" Text="Guest Check In Portal" VerticalAlignment="Top" Width="120" TextAlignment="Center"/>
-        
-        <Label Content="Search By Guest Name:" HorizontalAlignment="Left" Height="27" Margin="30,117,0,0" VerticalAlignment="Top" Width="144"/>
-             <Label Content="First" HorizontalAlignment="Left" Height="30" Margin="30,166,0,0" VerticalAlignment="Top" Width="43"/>
-                  <TextBox x:Name="firstNameText" HorizontalAlignment="Left" Height="30" Margin="78,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="336"/>
-             <Label Content="Last" HorizontalAlignment="Left" Height="30" Margin="30,217,0,0" VerticalAlignment="Top" Width="43"/>
-                  <TextBox x:Name="lastNameText" HorizontalAlignment="Left" Height="30" Margin="78,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="336"/>
 
-             <Label Content="Search By Confirmation Number:" HorizontalAlignment="Left" Height="27" Margin="448,117,0,0" VerticalAlignment="Top" Width="201"/>
-        <TextBox x:Name="confirmationNumText" HorizontalAlignment="Left" Height="30" Margin="448,166,0,0" TextWrapping="Wrap" Text="Enter Confirmation Number" VerticalAlignment="Top" Width="331"/>
+        <Label Content="Search By Guest Name or Confirmation Number:" HorizontalAlignment="Left" Height="27" Margin="30,117,0,0" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="searchFieldText" HorizontalAlignment="Left" Height="30" Margin="30,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="729"/>
 
         <Button x:Name="searchForReservation" Click="searchForReservation_Click" Content="Search" HorizontalAlignment="Left" Height="25" Margin="316,277,0,0" VerticalAlignment="Top" Width="117"/>
-       
+
 
     </Grid>
 </Window>

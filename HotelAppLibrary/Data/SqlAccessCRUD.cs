@@ -55,13 +55,13 @@ namespace HotelAppLibrary.Databases
 
        
 
-    public ReservationModel GetAReservation(string firstName, string lastName)
+    public ReservationModel GetAReservation(string searchString)
         {
             return _db.LoadData<ReservationModel, dynamic>("dbo.sProcReservations_GetAReservation",
-                                                           new { firstName, lastName },
+                                                           new { searchString },
                                                            _connectionStringName,
                                                            true).First();
-        } //need to remove todaydate() from the sproc. need to update this to allow searching for any part of the name or confirmation number - SECURELY
+        }
 
         public ReservationModel CheckInGuest(string confirmationNumber)
         {

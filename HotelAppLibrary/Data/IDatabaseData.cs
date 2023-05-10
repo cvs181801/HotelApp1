@@ -7,6 +7,6 @@ namespace HotelAppLibrary.Databases
         ReservationModel CheckInGuest(string confirmationNumber);
         ReservationModel CreateAReservation(int RoomTypeId, DateTime startDate, DateTime endDate, string firstName, string lastName);
         List<RoomTypeModel> GetAllAvailableRoomTypes(DateTime startDate, DateTime endDate);
-        ReservationModel GetAReservation(string firstName, string lastName);
+        ReservationModel GetAReservation(string searchString);
     }
 }
