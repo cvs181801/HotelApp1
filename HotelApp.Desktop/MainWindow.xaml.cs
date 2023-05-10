@@ -38,7 +38,7 @@ namespace HotelApp.Desktop
         
         private void searchForReservation_Click(object sender, RoutedEventArgs e)
         {
-            ReservationModel result = _db.GetAReservation(searchFieldText.Text);
+            List<ReservationModel> result = _db.GetAReservation(searchFieldText.Text);
          
         }
     }

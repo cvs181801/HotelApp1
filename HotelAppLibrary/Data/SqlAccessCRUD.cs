@@ -55,12 +55,12 @@ namespace HotelAppLibrary.Databases
 
        
 
-    public ReservationModel GetAReservation(string searchString)
+    public List<ReservationModel> GetAReservation(string searchString)
         {
             return _db.LoadData<ReservationModel, dynamic>("dbo.sProcReservations_GetAReservation",
                                                            new { searchString },
                                                            _connectionStringName,
-                                                           true).First();
+                                                           true);
         }
 
         public ReservationModel CheckInGuest(string confirmationNumber)
