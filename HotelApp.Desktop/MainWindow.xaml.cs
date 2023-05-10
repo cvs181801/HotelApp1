@@ -39,19 +39,21 @@ namespace HotelApp.Desktop
         {
             //check to see which of the text boxes have text. Based on the ones that have text in them, use one of the following methods:
             //firs name filled in:
-            _db.GetAReservation(firstNameText.Text);
+            //_db.GetAReservation(firstNameText.Text);
             //first and last name filled in:
             _db.GetAReservation(firstNameText.Text, lastNameText.Text);
             //last name filled in:
-            _db.GetAReservation(lastNameText.Text);
+            //_db.GetAReservation(lastNameText.Text);
             //confirmation number filled in:
-            _db.GetAReservation(confirmationNumText.Text);
+           // _db.GetAReservation(confirmationNumText.Text);
             //first name and confirmation number 
             _db.GetAReservation(firstNameText.Text, confirmationNumText.Text);
             //last name and confirmation number:
             _db.GetAReservation(lastNameText.Text, confirmationNumText.Text);
             //all 3:
-            _db.GetAReservation(firstNameText.Text, lastNameText.Text, confirmationNumText.Text);
+            //_db.GetAReservation(firstNameText.Text, lastNameText.Text, confirmationNumText.Text);
+
+            //sanitizing input
         }
     }
 }
