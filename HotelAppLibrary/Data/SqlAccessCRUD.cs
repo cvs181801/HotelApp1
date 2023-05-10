@@ -61,7 +61,7 @@ namespace HotelAppLibrary.Databases
                                                            new { firstName, lastName },
                                                            _connectionStringName,
                                                            true).First();
-        }
+        } //need to remove todaydate() from the sproc. need to update this to allow searching for any part of the name or confirmation number - SECURELY
 
         public ReservationModel CheckInGuest(string confirmationNumber)
         {

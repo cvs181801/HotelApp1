@@ -13,4 +13,14 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-preview.3.23174.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HotelAppLibrary\HotelAppLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
