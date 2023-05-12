@@ -55,7 +55,7 @@ namespace HotelAppLibrary.Databases
 
        
 
-    public List<ReservationModel> GetAReservation(string searchString)
+        public List<ReservationModel> GetAReservation(string searchString)
         {
             return _db.LoadData<ReservationModel, dynamic>("dbo.sProcReservations_GetAReservation",
                                                            new { searchString },
@@ -65,10 +65,12 @@ namespace HotelAppLibrary.Databases
 
         public ReservationModel CheckInGuest(string confirmationNumber)
         {
-            return _db.SaveData<ReservationModel>("dbo.sProcReservations_CheckIn",
+            ReservationModel checkedInResv = _db.SaveData<ReservationModel>("dbo.sProcReservations_CheckIn",
                         new { confirmationNumber },
                          _connectionStringName,
                          false);
+
+            return checkedInResv;
         }
     }
 }

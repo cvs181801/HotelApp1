@@ -46,7 +46,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Checked In:" Margin="5"></TextBlock>
                             <TextBlock Text="{Binding CheckedIn}" Margin="5"></TextBlock>
-                            <Button Margin="5" Padding="10" Click="Button_Click_Check">Check In</Button>
+                            <Button Margin="5" Padding="10" Click="Button_Click_CheckIn">Check In</Button>
                         </StackPanel>
                     </StackPanel>
 

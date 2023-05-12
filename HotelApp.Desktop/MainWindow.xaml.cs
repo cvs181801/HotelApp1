@@ -54,9 +54,12 @@ namespace HotelApp.Desktop
 
         }
 
-        private void Button_Click_Check(object sender, RoutedEventArgs e)
+        private void Button_Click_CheckIn(object sender, RoutedEventArgs e)
         {
+            ReservationModel checkedInResv = _db.CheckInGuest(ConfirmationNumber.ToString()); //for some reason the confirmation number isn't getting passed in here  ?
 
+            List<ReservationModel> result = _db.GetAReservation(searchFieldText.Text);
+            resultsList.ItemsSource = result;
         }
     }
 }
