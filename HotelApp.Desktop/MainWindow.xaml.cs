@@ -24,10 +24,20 @@ namespace HotelApp.Desktop
     {
         private readonly IDatabaseData _db;
 
+        public int GuestId { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string ConfirmationNum { get; set; }
+        public string RoomNumber { get; set; }
+        public string RoomType { get; set; }
+
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public bool CheckedIn { get; set; }
+
+        public Guid ConfirmationNumber { get; set; }
 
         public MainWindow(IDatabaseData db)
         {
@@ -39,7 +49,14 @@ namespace HotelApp.Desktop
         private void searchForReservation_Click(object sender, RoutedEventArgs e)
         {
             List<ReservationModel> result = _db.GetAReservation(searchFieldText.Text);
-         
+            resultsList.ItemsSource = result;
+
+
+        }
+
+        private void Button_Click_Check(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -9,14 +9,47 @@
     <Grid Margin="0,0,0,-6">
         <TextBlock HorizontalAlignment="Left" Height="27" Margin="328,47,0,0" TextWrapping="Wrap" Text="Guest Check In Portal" VerticalAlignment="Top" Width="120" TextAlignment="Center"/>
 
-        <Label Content="Search By Guest Name or Confirmation Number:" HorizontalAlignment="Left" Height="27" Margin="30,117,0,0" VerticalAlignment="Top" Width="271"/>
-        <TextBox x:Name="searchFieldText" HorizontalAlignment="Left" Height="30" Margin="30,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="729"/>
+        <Label Content="Search By Guest Name or Confirmation Number:" HorizontalAlignment="Left" Height="27" Margin="30,60,0,0" VerticalAlignment="Top" Width="271"/>
+        <TextBox x:Name="searchFieldText" HorizontalAlignment="Left" Height="31" Margin="30,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="729"/>
 
-        <Button x:Name="searchForReservation" Click="searchForReservation_Click" Content="Search" HorizontalAlignment="Left" Height="25" Margin="328,220,0,0" VerticalAlignment="Top" Width="117"/>
-        <ListBox x:Name="resultsList" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="149" Margin="30,268,0,0" VerticalAlignment="Top" Width="729" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <Button x:Name="searchForReservation" Click="searchForReservation_Click" Content="Search" HorizontalAlignment="Left" Height="32" Margin="328,139,0,0" VerticalAlignment="Top" Width="117"/>
+
+        <ListBox x:Name="resultsList" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="195" Margin="30,188,0,0" VerticalAlignment="Top" Width="729" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Guest Id:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding GuestId}" Margin="5"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Guest Name:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding FirstName}" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding LastName}" Margin="5"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Check In:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding StartDate, StringFormat=d}" Margin="5"></TextBlock>
+                            <TextBlock Text="Check Out:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding EndDate, StringFormat=d}" Margin="5"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Room Type:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding RoomType}" Margin="5"></TextBlock>
+                            <TextBlock Text="Room Number:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding RoomNumber}" Margin="5"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Confirmation Number:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding ConfirmationNumber}" Margin="5"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Checked In:" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding CheckedIn}" Margin="5"></TextBlock>
+                            <Button Margin="5" Padding="10" Click="Button_Click_Check">Check In</Button>
+                        </StackPanel>
+                    </StackPanel>
+
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
