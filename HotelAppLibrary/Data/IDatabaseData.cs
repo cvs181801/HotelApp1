@@ -10,3 +10,5 @@ namespace HotelAppLibrary.Databases
         List<ReservationModel> GetAReservation(string searchString);
     }
 }
+
+//small change
