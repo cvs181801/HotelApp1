@@ -13,6 +13,12 @@ namespace HotelApp.Web.Pages
         public int RoomTypeId { get; set; }
 
         [BindProperty(SupportsGet = true)]
+        public string RoomType { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string RoomDescription { get; set; }
+
+        [BindProperty(SupportsGet = true)]
         public string FirstName { get; set; }
 
         [BindProperty(SupportsGet = true)]

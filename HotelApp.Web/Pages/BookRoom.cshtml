@@ -3,22 +3,26 @@
 @{
     ViewData["Title"] = "Book a Room";
 }
+<h2 class="mt-2">You're almost there!</h2>
+<h2>Please confirm your booking information.</h2>
 
-<h2>Please Confirm Your Booking Information</h2>
+<p>Room Type: @Model.RoomType</p>
+<p>Room Description: @Model.RoomDescription</p>
+<p>Check In Date: @Model.DesiredStartDate.Date.ToString("MMMM dd, yyyy") </p>
+<p>Check Out Date: @Model.DesiredEndDate.Date.ToString("MMMM dd, yyyy")</p>
 
-<p>Room Type</p>
-<p>Room description</p>
 <form method="post" >
-    <div class="form-group">
-        <label asp-for="@Model.FirstName"></label>
-        <input type="string" asp-for="@Model.FirstName"/>
-
-        <label asp-for="@Model.LastName"></label>
-        <input type="string" asp-for="@Model.LastName" />
-
-    </div>
+        <div class="form-control" >
+            <label asp-for="@Model.FirstName">First Name: </label>
+            <input type="string" asp-for="@Model.FirstName"/>
+        </div>
+            <br />
+        <div class="form-control" >
+            <label asp-for="@Model.LastName">Last Name: </label>
+            <input type="string" asp-for="@Model.LastName" />
+        </div>
     <button 
-        type="submit" 
-        class="btn btn-primary"
-    >Confirm My Booking</button>
+        type="submit"
+            class="btn btn-info mt-3">
+            Confirm My Booking</button>
 </form>

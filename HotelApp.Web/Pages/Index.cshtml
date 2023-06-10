@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData[""] = "Home page";
 }
 
 <div class="text-center">
@@ -9,35 +9,38 @@
     <p>Choose Your Desired Date Range:</p>
 
     <form method="post">
-        <div class="form-group">
+        <div class="form-control" style="border: none">
             <label asp-for="@Model.DesiredStartDate"/>
             <input type="date" asp-for="@Model.DesiredStartDate"/>
         <div />
-        <div class="form-group">
+        <div class="form-control" style="border: none">
             <label asp-for="@Model.DesiredEndDate" />
             <input type="date" asp-for="@Model.DesiredEndDate" />
         <div />
-        <button type="submit" class="btn btn-primary">Search Rooms</button>
+                <button type="submit" class="btn btn-primary mt-2">Search Rooms</button>
     </form>
 </div>
 
     @if (Model.AvailableRoomTypes?.Count > 0)
     {
         <div>
-        <h2 class="text-center">All Rooms Available Between @Model.DesiredStartDate.Date.ToString("MMMM dd, yyyy") and @Model.DesiredEndDate.Date.ToString("MMMM dd, yyyy")</h2>
+        <h2 class="text-center my-2 fw-light pb-3 pt-3">All Rooms Available Between @Model.DesiredStartDate.Date.ToString("MMMM dd, yyyy") and @Model.DesiredEndDate.Date.ToString("MMMM dd, yyyy")</h2>
             
         </div>
             @foreach(var room in Model.AvailableRoomTypes)
             {
-                <div class="card">
+        <div class="card p-sm-2">
                     <p>@room.Type</p>
                     <p>@room.Description</p>
                     <p>@string.Format("{0:C}", room.Price)</p>
                     <div ><a 
+                        class="btn btn-info"
                         asp-page="/BookRoom"
                         asp-route-roomtypeid="@room.Id" 
                         asp-route-desiredstartdate="@Model.DesiredStartDate.ToShortDateString()"
                         asp-route-desiredenddate="@Model.DesiredEndDate.ToShortDateString()"
+                        asp-route-roomtype="@room.Type"
+                        asp-route-roomdescription="@room.Description"
                     >Book This Room</a>
                     </div>
                 </div>
