@@ -22,6 +22,5 @@ begin
 		OR g.lastName LIKE '%' + @searchString + '%'
 		OR r.confimationNumber LIKE '%' + @searchString + '%' 
 	ORDER BY StartDate;
-		--make it so user cannot search an empty string or anything under 2 letters/characters (otherwise they'll see all reservations coming back)
 		
 end

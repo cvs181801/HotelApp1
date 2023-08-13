@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Linq;
 using System.Data;
-using System.Data.SqlClient; // System.Data.SqlClient is the ADO.NET provider you use to access SQL Server or Azure SQL Databases.
+using System.Data.SqlClient; 
 using Microsoft.Extensions.Configuration;
 using HotelAppLibrary.Models;
 using System.Text.Json.Serialization;
